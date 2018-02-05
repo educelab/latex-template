@@ -1,0 +1,15 @@
+stages:
+    - build
+
+latex:
+    image: thomasweise/texlive:latest
+    stage: build
+    script:
+        - make
+    artifacts:
+        name: "${CI_PROJECT_NAME}-${CI_BUILD_REF_NAME}-${CI_COMMIT_SHA}"
+        paths:
+            - build/main.pdf
+        expire_in: 1 week
+    tags:
+        - docker
