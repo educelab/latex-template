@@ -1,34 +1,133 @@
-\documentclass[letterpaper, 11pt]{article}
-\usepackage[utf8]{inputenc}
-\usepackage{multicol}
+\documentclass[letterpaper]{article}
+
+% Package imports
 \usepackage{graphicx}
 \usepackage{amsmath}
-\usepackage{float}
-\usepackage{chngcntr}
+\usepackage{amssymb}
+\usepackage[noblocks]{authblk}
+\usepackage{hyperref}
 
-% doc info
-\title{A Template Paper}
-\author{C. Seth Parker\textdagger\\
-{\footnotesize \textdagger\textit{Dept. of Computer Science, University of Kentucky, Lexington, KY, USA}}\\
-{\footnotesize Correspondence to: c.seth.parker@uky.edu}
-}
+% Make affiliation line small and italicized
+\renewcommand\Affilfont{\itshape\small}
+
+% Use biblatex instead of bibtex
+\usepackage[
+    backend=biber,
+    loadfiles=true,
+    doi=true,
+    sorting=none
+]{biblatex}
+
+% Load the local bib references
+\addbibresource{refs.bib}
+
+%% Uncomment to load the Bibtex References project references
+%% Note: Manually download or use git submodule to get a copy of bibtex-refs first
+%\input{bibtex-refs/add-all-biblatex}
+
+% Custom commands: et al., eg., and etc.
+\newcommand{\etal}{\textit{et~al}.\@}
+\newcommand{\eg}{e.\@g{}.\@}
+\newcommand{\etc}{etc.\@}
+
+%%%%% Document Info %%%%%
+% Title
+\title{The EduceLab \LaTeX{} Paper Template}
+
+% Authors separated by affiliation
+\author{A. Lead Author \thanks{Correspondence to: a.lead.author@uky.edu}}
+\author{Second Author}
+\affil{Dept. of Computer Science, University of Kentucky, Lexington, KY, USA}
+
+\author{Third Author}
+\affil{Magdalene College, University of Oxford, Oxford, GB}
 \date{}
+%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
+%% Uncomment the begin and end tags to create separate title page
+% \begin{titlepage}
+\maketitle{}
+% \end{titlepage}
 
-\input{00-titlepage}
+%%% BEGIN TEMPLATE TEXT %%%
+\begin{abstract}
+This is a basic \LaTeX{} project template to get you writing faster.
+It comes equipped with easy compilation, auto-builds on GitLab, and examples of how to do the most common things.
+It only uses the basic style because you'll just have to reformat it for submission later anyway.
+\end{abstract}
 
-\input{abstract}
-%
-\input{01-introduction}
-\input{02-methods}
-\input{03-metrics}
-\input{04-results}
-\input{05-conclusion}
-\input{06-acks}
-\input{07-appendix}
-%
-\bibliographystyle{unsrt}
-\bibliography{refs}
+%%% Introduction %%%
+\section{Introduction} \label{sec:intro}
+Welcome to the EduceLab \LaTeX{} template!
+This is a barebones template that is designed to get you started writing in \LaTeX{} quickly without a lot of fuss.
+This project uses a basic style because you'll almost definitely have to reformat everything when you submit for publication.
+In this document, we highlight the template features and provide a few examples for the things that people normally do in such documents.
+
+\paragraph{Getting started}
+\begin{enumerate}
+\item Download this project and open \texttt{main.tex} in your favorite text editor.
+\item Fill in the document info section.
+\item Replace the abstract between \verb=\begin{abstract}...\end{abstract}=.
+\item Remove the remaining template text.
+\item Write your paper.
+\item Profit!
+\end{enumerate}
+
+\paragraph{Compiling a PDF}
+This project provides a \texttt{latexmk} file to make compilation of your document easy.
+Latexmk is an excellent program which automatically runs Latex and BibTex the correct number of times needed to resolve all references.
+
+To build a PDF using this system, open a shell in the root of this project and run \texttt{latexmk}.
+The PDF can be found in \texttt{build/main.pdf}, and a compressed version can be found in \texttt{build/main-compressed.pdf}.
+As a convenience, we also provide a \texttt{Makefile} that aliases \texttt{latexmk} under various configurations.
+See the project \texttt{README} for more details.
+
+\section{References and Citations} \label{sec:citations}
+Reference external texts using the \verb=\cite{}= command.
+Reference internal \verb=\label{}= (i.e. sections, figures, equations) using the \verb=\ref{}= command.
+For example, \verb=\cite{latexcompanion}= will reference the \LaTeX{} book \cite{latexcompanion} from the included \texttt{refs.bib} file, and \verb=\ref{fig:example}= will reference Figure \ref{fig:example}.
+Feel free to replace the contents of \texttt{refs.bib} with your own BibTex entries.
+
+This project also comes equipped with support for the \href{https://code.cs.uky.edu/seales-research/papers/bibtex-refs}{BibTex References} project.
+If you copied this project using git, initialize the \texttt{bibtex-refs} submodule using \texttt{git submodule update --init}.
+If this project is not a git clone, then download a copy of \texttt{bibtex-refs} and place it in the root of this directory.
+After you have a copy of the references using either method, uncomment \verb=\input{bibtex-refs/add-all-biblatex}= at the top of this document.
+References can be cited using the standard \verb=\cite{}= command.
+
+\section{Figures and Equations}
+Figures are inserted using the \texttt{figure} environment, and images can be added to a figure using the \verb=\includegraphics{}= command.
+This natively supports JPG, PNG, PDF, SVG, TIFF, and many more, so no need convert things to PostScript on your own.
+We suggest organizing all of your images into a subdirectory in order to keep things clean.
+
+\begin{figure}[t]
+  \centering
+    \includegraphics[width=\linewidth]{example-image-a}
+    \caption{An example figure.}
+    \label{fig:example}
+\end{figure}
+
+Equation support is supplied by the \texttt{amsmath} package.
+To write an in-line equation, surround content with the \verb=$...$= delimiters.
+For example, \verb#$E=mc^2$# will print as $E=mc^2$.
+To write a numbered equation, use the \texttt{equation} environment:
+
+\begin{equation}
+E = mc^2
+\end{equation}
+
+To write an unnumbered equation, use the \texttt{equation*} environment or wrap the content in \verb=\[...\]=:
+\[
+F = ma
+\]
+
+\section{Conclusion}
+Once you have finished writing your document, look up the formatting guidelines for the venue you are targeting and modify this document accordingly.
+If you stick to the basic commands shown here, you shouldn't have to change too much.
+%%% END TEMPLATE TEXT %%%
+
+% Print bilbiography
+% Comment this out if you don't use the \cite command for anything
+\printbibliography
 
 \end{document}
