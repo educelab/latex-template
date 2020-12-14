@@ -30,7 +30,7 @@ instantiate a new Git project through the GitLab interface:
     - If you are planning on using the [BibTex References](https://code.cs.uky.edu/seales-research/papers/bibtex-refs) project, you can clone with `git clone --recursive` (git 1.9-2.12) or `git clone --recurse-submodules` (git 2.13+)
 6. Open `main.tex` in your favorite plain text editor and begin writing!
 
-### Build a PDF
+## Build a PDF
 This project provides a `latexmk` file to make compilation of your document
 easy. Latexmk is an excellent program which automatically runs Latex and BibTex
 the correct number of times needed to resolve all references.
