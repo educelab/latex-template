@@ -1,15 +1,23 @@
-stages:
-    - build
+variables:
+    # GIT_SUBMODULE_STRATEGY: normal
+    PAPER_NAME: "main"
+
+.build_vars: &build_vars
+    - export DATETIME=`date "+%Y%m%d%H%M"`
 
 latex:
-    image: thomasweise/texlive:latest
+    image: volcart/texlive:latest
     stage: build
+    before_script:
+        - *build_vars
     script:
-        - make
+        - latexmk
+        - mv build/main.pdf ${PAPER_NAME}-${DATETIME}.pdf
+        - mv build/main-compressed.pdf ${PAPER_NAME}-${DATETIME}-sm.pdf
     artifacts:
         name: "${CI_PROJECT_NAME}-${CI_BUILD_REF_NAME}-${CI_COMMIT_SHA}"
         paths:
-            - build/main.pdf
-        expire_in: 1 week
+            - ${PAPER_NAME}-*.pdf
+        expire_in: 1 month
     tags:
         - docker
