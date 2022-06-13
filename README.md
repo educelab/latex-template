@@ -12,15 +12,14 @@ recent TexLive installation should provide all of the packages you need.
 
 ## Using this template
 ### As a standalone project
-Download a [ZIP file](https://code.cs.uky.edu/seales-research/template-projects/latex-paper-template/-/archive/master/latex-paper-template-master.zip)
-or [Tarball](https://code.cs.uky.edu/seales-research/template-projects/latex-paper-template/-/archive/master/latex-paper-template-master.tar.gz)
+Download a [ZIP file](https://gitlab.com/educelab/templates/latex-template/-/archive/main/latex-template-main.zip)
+or [Tarball](https://gitlab.com/educelab/templates/latex-template/-/archive/main/latex-template-main.tar.gz)
 containing the latest version of the source code. Open `main.tex` in your
 favorite plain text editor and begin writing!
 
 ### As a git project
-This project is enabled as a template project for the EduceLab group on our
-[private GitLab server](https://code.cs.uky.edu). This means you can
-instantiate a new Git project through the GitLab interface:
+This project is enabled as a template project for the EduceLab group. This
+means you can instantiate a new Git project through the GitLab interface:
 
 1. On the **New project** page, select the **Create from template** option.
 2. In the template selector list, select the **Group** tab
