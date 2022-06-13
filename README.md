@@ -27,7 +27,7 @@ instantiate a new Git project through the GitLab interface:
 3. Find **Latex Paper Template** and click **Use template**
 4. Set the name and details for your new project and click **Create project**
 5. Clone your new project to your computer
-    - If you are planning on using the [BibTex References](https://code.cs.uky.edu/seales-research/papers/bibtex-refs) project, you can clone with `git clone --recursive` (git 1.9-2.12) or `git clone --recurse-submodules` (git 2.13+)
+    - If you are planning on using the [BibTex References](https://gitlab.com/educelab/publications/bibtex-refs) project, you can clone with `git clone --recursive` (git 1.9-2.12) or `git clone --recurse-submodules` (git 2.13+)
 6. Open `main.tex` in your favorite plain text editor and begin writing!
 
 ## Build a PDF
@@ -60,9 +60,9 @@ your document changes to your repository. The build status and resulting PDFs
 can be found in the **CI/CD** section of your repository.
 
 ### bibtex-refs submodule
-If you are using the BibTex references submodule in your project, you need to
-customize the CI configuration so that GitLab can access this (currently)
-private project when doing CI builds.
+If you are using GitLab CI and the BibTex references submodule in your project,
+you need to customize this template's CI configuration so that GitLab correctly
+downloads the submodule.
 
 First, open `.gitlab-ci.yml` and uncomment `GIT_SUBMODULE_STRATEGY: normal`.
 Next, open `.gitmodules` and change the URL for `bibtex-refs` to that project's
@@ -70,14 +70,14 @@ Next, open `.gitmodules` and change the URL for `bibtex-refs` to that project's
 
 ```shell
 # BibTex References URL
-https://code.cs.uky.edu/seales-research/papers/bibtex-refs.git
+https://gitlab.com/educelab/publications/bibtex-refs.git
 
 # Paper in personal namespace
-https://code.cs.uky.edu/my-name/my-paper.git                 # Paper URL
+https://gitlab.com/my-name/my-paper.git                      # Paper URL
 ../../seales-research/papers/bibtex-refs.git                 # .gitmodules
 
 # Paper in group namespace
-https://code.cs.uky.edu/seales-research/papers/my-paper.git  # Paper URL
+https://gitlab.com/educelab/publications/my-paper.git        # Paper URL
 ../bibtex-refs.git                                           # .gitmodules
 ```
 
