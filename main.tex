@@ -23,7 +23,7 @@
 
 %% Uncomment to load the Bibtex References project references
 %% Note: Manually download or use git submodule to get a copy of bibtex-refs first
-%\input{bibtex-refs/add-all-biblatex}
+%\input{educelab-refs}
 
 % Custom commands: et al., eg., and etc.
 \newcommand{\etal}{\textit{et~al}.\@}
@@ -79,7 +79,7 @@ This project provides a \texttt{latexmk} file to make compilation of your docume
 Latexmk is an excellent program which automatically runs Latex and BibTex the correct number of times needed to resolve all references.
 
 To build a PDF using this system, open a shell in the root of this project and run \texttt{latexmk}.
-The PDF can be found in \texttt{build/main.pdf}, and a compressed version can be found in \texttt{build/main-compressed.pdf}.
+The PDF can be found in \texttt{build/main.pdf}.
 As a convenience, we also provide a \texttt{Makefile} that aliases \texttt{latexmk} under various configurations.
 See the project \texttt{README} for more details.
 
@@ -90,9 +90,9 @@ For example, \verb=\cite{latexcompanion}= will reference the \LaTeX{} book \cite
 Feel free to replace the contents of \texttt{refs.bib} with your own BibTex entries.
 
 This project also comes equipped with support for the \href{https://gitlab.com/educelab/publications/bibtex-refs}{BibTex References} project.
-If you copied this project using git, initialize the \texttt{bibtex-refs} submodule using \texttt{git submodule update --init}.
+If you cloned this project using git, initialize the \texttt{bibtex-refs} submodule using \texttt{git submodule update --init}.
 If this project is not a git clone, then download a copy of \texttt{bibtex-refs} and place it in the root of this directory.
-After you have a copy of the references using either method, uncomment \verb=\input{bibtex-refs/add-all-biblatex}= at the top of this document.
+After you have a copy of the references using either method, uncomment \verb=\input{educelab-refs}= at the top of this document.
 References can be cited using the standard \verb=\cite{}= command.
 
 \section{Figures and Equations}

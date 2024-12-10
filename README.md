@@ -40,8 +40,7 @@ run:
 latexmk
 ```
 
-The compiled PDF can be found in `build/main.pdf`, and a
-compressed version can be found in `build/main-compressed.pdf`.
+The compiled PDF can be found in `build/main.pdf`.
 
 As a convenience, we also provide a `Makefile` that aliases `latexmk` under various configurations:
 ```shell
@@ -53,31 +52,12 @@ make clean-build   # latexmk -c
 
 ## Automatic GitLab CI Builds
 This template provides a `.gitlab-ci.yml` file which enables automatic CI
-builds of your document when you push to a GitLab server. To use, make sure
-your GitLab project has access to a Docker CI runner tagged `docker`, then push
-your document changes to your repository. The build status and resulting PDFs
+builds of your document when you push to a GitLab server. To use, push your 
+document changes to your repository. The build status and resulting PDFs
 can be found in the **CI/CD** section of your repository.
 
 ### bibtex-refs submodule
 If you are using GitLab CI and the BibTex references submodule in your project,
 you need to customize this template's CI configuration so that GitLab correctly
-downloads the submodule.
-
-First, open `.gitlab-ci.yml` and uncomment `GIT_SUBMODULE_STRATEGY: normal`.
-Next, open `.gitmodules` and change the URL for `bibtex-refs` to that project's
-*relative location* to your project on the GitLab server. For example:
-
-```shell
-# BibTex References URL
-https://gitlab.com/educelab/publications/bibtex-refs.git
-
-# Paper in personal namespace
-https://gitlab.com/my-name/my-paper.git                      # Paper URL
-../../seales-research/papers/bibtex-refs.git                 # .gitmodules
-
-# Paper in group namespace
-https://gitlab.com/educelab/publications/my-paper.git        # Paper URL
-../bibtex-refs.git                                           # .gitmodules
-```
-
-Add and commit both of these changes to your repository.
+downloads the submodule. Open `.gitlab-ci.yml` and uncomment the
+`GIT_SUBMODULE_STRATEGY: normal` line.
