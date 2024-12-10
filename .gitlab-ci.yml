@@ -13,11 +13,8 @@ latex:
     script:
         - latexmk
         - mv build/main.pdf ${PAPER_NAME}-${DATETIME}.pdf
-        - mv build/main-compressed.pdf ${PAPER_NAME}-${DATETIME}-sm.pdf
     artifacts:
         name: "${CI_PROJECT_NAME}-${CI_BUILD_REF_NAME}-${CI_COMMIT_SHA}"
         paths:
             - ${PAPER_NAME}-*.pdf
         expire_in: 1 month
-    tags:
-        - docker

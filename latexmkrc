@@ -5,11 +5,3 @@ $bibtex_use = 2;
 $pdf_mode = 1;
 $out_dir = 'build';
 @default_files = ('main.tex');
-
-END {
-  if($cleanup_mode == 0) {
-    system("gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/printer -dDownsampleColorImages=true -dColorImageResolution=300 -dNOPAUSE -dQUIET -dBATCH -sOutputFile=\"${out_dir}/main-compressed.pdf\" \"${out_dir}/main.pdf\"");
-  } elsif($cleanup_mode == 1 && -e "${out_dir}/main-compressed.pdf") {
-    unlink("${out_dir}/main-compressed.pdf");
-  }
-}
