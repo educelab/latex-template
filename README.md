@@ -68,8 +68,8 @@ major version.
 
 ## Automatic GitHub Actions Builds
 This template provides a GitHub Actions workflow
-(`.github/workflows/build.yml`) that builds your document on every push and
-pull request using the official [TeX Live Docker image](https://hub.docker.com/r/texlive/texlive).
+(`.github/workflows/build.yml`) that builds your document on every pull request and
+push to `main` using the official [TeX Live Docker image](https://hub.docker.com/r/texlive/texlive).
 The `bibtex-refs` submodule is checked out automatically. The resulting PDF is
 attached to each workflow run as a downloadable artifact in the **Actions** tab
 of your repository.
