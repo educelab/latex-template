@@ -26,11 +26,15 @@ jobs:
       - name: Build with latexmk
         run: docker run --rm -v "$PWD":/work -w /work texlive/texlive:latest latexmk
 
+      # Artifact names can't contain "/", which appears in PR refs and branch names
       - name: Name PDF
-        run: cp build/main.pdf "${PAPER_NAME}-$(date +%Y%m%d%H%M).pdf"
+        run: |
+          cp build/main.pdf "${PAPER_NAME}-$(date +%Y%m%d%H%M).pdf"
+          ref="${GITHUB_HEAD_REF:-$GITHUB_REF_NAME}"
+          echo "ARTIFACT_NAME=${GITHUB_REPOSITORY#*/}-${ref//\//-}-${GITHUB_SHA::7}" >> "$GITHUB_ENV"
 
       - uses: actions/upload-artifact@v7
         with:
-          name: ${{ github.event.repository.name }}-${{ github.ref_name }}-${{ github.sha }}
+          name: ${{ env.ARTIFACT_NAME }}
           path: ${{ env.PAPER_NAME }}-*.pdf
           retention-days: 30
