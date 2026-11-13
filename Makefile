@@ -1,3 +1,5 @@
+.PHONY: all rebuild clean clean-build
+
 all:
 	@latexmk
 
