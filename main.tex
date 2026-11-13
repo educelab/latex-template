@@ -5,7 +5,6 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage[noblocks]{authblk}
-\usepackage{hyperref}
 
 % Make affiliation line small and italicized
 \renewcommand\Affilfont{\itshape\small}
@@ -13,7 +12,6 @@
 % Use biblatex instead of bibtex
 \usepackage[
     backend=biber,
-    loadfiles=true,
     doi=true,
     sorting=none
 ]{biblatex}
@@ -21,9 +19,11 @@
 % Load the local bib references
 \addbibresource{refs.bib}
 
-%% Uncomment to load the Bibtex References project references
-%% Note: Manually download or use git submodule to get a copy of bibtex-refs first
-%\input{educelab-refs}
+%% Uncomment to load the EduceLab BibTeX References (bibtex-refs submodule)
+%\input{bibtex-refs/add-all-biblatex}
+
+% Load hyperref last
+\usepackage{hyperref}
 
 % Custom commands: et al., eg., and etc.
 \newcommand{\etal}{\textit{et~al}.\@}
@@ -47,13 +47,13 @@
 \begin{document}
 %% Uncomment the begin and end tags to create separate title page
 % \begin{titlepage}
-\maketitle{}
+\maketitle
 % \end{titlepage}
 
 %%% BEGIN TEMPLATE TEXT %%%
 \begin{abstract}
 This is a basic \LaTeX{} project template to get you writing faster.
-It comes equipped with easy compilation, auto-builds on GitLab, and examples of how to do the most common things.
+It comes equipped with easy compilation, automatic builds on GitHub, and examples of how to do the most common things.
 It only uses the basic style because you'll just have to reformat it for submission later anyway.
 \end{abstract}
 
@@ -92,7 +92,7 @@ Feel free to replace the contents of \texttt{refs.bib} with your own BibTex entr
 This project also comes equipped with support for the \href{https://gitlab.com/educelab/publications/bibtex-refs}{BibTex References} project.
 If you cloned this project using git, initialize the \texttt{bibtex-refs} submodule using \texttt{git submodule update --init}.
 If this project is not a git clone, then download a copy of \texttt{bibtex-refs} and place it in the root of this directory.
-After you have a copy of the references using either method, uncomment \verb=\input{educelab-refs}= at the top of this document.
+After you have a copy of the references using either method, uncomment \verb=\input{bibtex-refs/add-all-biblatex}= at the top of this document.
 References can be cited using the standard \verb=\cite{}= command.
 
 \section{Figures and Equations}
@@ -126,7 +126,7 @@ Once you have finished writing your document, look up the formatting guidelines 
 If you stick to the basic commands shown here, you shouldn't have to change too much.
 %%% END TEMPLATE TEXT %%%
 
-% Print bilbiography
+% Print bibliography
 % Comment this out if you don't use the \cite command for anything
 \printbibliography
 
